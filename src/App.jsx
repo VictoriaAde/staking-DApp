@@ -10,21 +10,31 @@ configureWeb3Modal();
 
 function App() {
   const pools = useGetPool();
-  console.log(pools);
+  // console.log("pools", pools);
+
+  // Restructure and name the data
+  const structuredPools = pools.map((item, index) => ({
+    id: index,
+    totalStakers: item[0],
+    totalStakedAmount: item[1],
+    rewardReserve: item[2],
+    rewardRate: item[3],
+  }));
+
+  console.log("structuredPools", structuredPools);
 
   return (
     <Container>
       <Header />
       <main className="mt-6">
         <CreatePoolComponent />
-        {pools.map((item, index) => (
+        {structuredPools.map((pool) => (
           <PoolCard
-            key={index}
-            totalStakers={item[0]}
-            totalStakedAmount={item[1]}
-            rewardReserve={item[2]}
-            rewardRate={item[3]}
-            PoolCount={Number(item.PoolCount)}
+            key={pool.id}
+            totalStakers={Number(pool.totalStakers)}
+            totalStakedAmount={Number(pool.totalStakedAmount)}
+            rewardReserve={Number(pool.rewardReserve)}
+            rewardRate={Number(pool.rewardRate)}
           />
         ))}
       </main>

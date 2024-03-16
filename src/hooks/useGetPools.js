@@ -11,13 +11,15 @@ const useGetPools = () => {
     contract
       .getPoolByID(0)
       .then((res) => {
-        setPool((prev) => [...prev, res]);
-
-        console.log(res);
+        // Convert the Proxy object to a regular array
+        const myTarget = Array.from(
+          { length: res.length },
+          (_, index) => res[index]
+        );
+        setPool((prev) => [...prev, myTarget]);
       })
       .catch((err) => {
         console.error("error fetching pools: ", err);
-        // setProposal((prev) => ({ ...prev, loading: false }));
       });
   }, []);
 

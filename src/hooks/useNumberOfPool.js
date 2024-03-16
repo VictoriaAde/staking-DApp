@@ -10,7 +10,7 @@ const useNumberOfPool = () => {
   // }, []);
 
   useEffect(() => {
-    const eventListerner = () => {
+    const eventListener = () => {
       setValue((prev) => prev + 1);
     };
 
@@ -31,9 +31,9 @@ const useNumberOfPool = () => {
       import.meta.env.VITE_wss_rpc_url
     );
 
-    wssProvider2.on(filter, eventListerner);
+    wssProvider2.on(filter, eventListener);
 
-    return () => wssProvider2.off(filter, eventListerner);
+    return () => wssProvider2.off(filter, eventListener);
   }, []);
 
   return value;

@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getStakingContract } from "../constants/contracts";
 import { readOnlyProvider } from "../constants/providers";
-// import { decodeBytes32String } from "ethers";
 
 const useGetPools = () => {
   const [pool, setPool] = useState([]);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     const contract = getStakingContract(readOnlyProvider);
     contract
       .getPoolByID(0)
       .then((res) => {
-        // Convert the Proxy object to a regular array
         const myTarget = Array.from(
           { length: res.length },
           (_, index) => res[index]
@@ -27,5 +29,3 @@ const useGetPools = () => {
 };
 
 export default useGetPools;
-
-//

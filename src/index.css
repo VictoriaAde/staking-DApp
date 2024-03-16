@@ -11,3 +11,7 @@
   padding: 2rem;
   text-align: center;
 }
+button {
+  background-color: rgb(65, 161, 129) !important;
+  color: #000 !important;
+}

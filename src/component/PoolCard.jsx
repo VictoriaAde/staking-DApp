@@ -1,5 +1,6 @@
 import { Box, Card, Flex, Text } from "@radix-ui/themes";
 import StakeComponent from "./StakeComponent";
+import UnstakeComponent from "./UnstakeComponent";
 
 const PoolCard = ({
   totalStakers,
@@ -13,21 +14,27 @@ const PoolCard = ({
         <Box width={"100%"}>
           <Flex justify={"between"} align={"center"}>
             <div>
-              <Text as="div" weight="bold">
-                totalStakers {totalStakers}
+              <Text as="div">
+                <span className="font-medium  ">Total Stakers:</span>
+                {totalStakers}
               </Text>
-              <Text as="div" weight="bold">
-                totalStakedAmount {totalStakedAmount}
+              <Text as="div">
+                <span className="font-medium  ">Total Staked Amount: </span>
+                {totalStakedAmount}
               </Text>
-              <Text as="div" weight="bold">
-                rewardReserve {rewardReserve}
+              <Text as="div">
+                <span className="font-medium  ">Reward Reserve:</span>
+                {rewardReserve}
               </Text>
-              <Text as="div" weight="bold">
-                rewardRate {rewardRate}
+              <Text as="div">
+                <span className="font-medium  ">
+                  Reward Rate: {rewardRate}{" "}
+                </span>
               </Text>
             </div>
           </Flex>
           <StakeComponent />
+          <UnstakeComponent />
         </Box>
       </Flex>
     </Card>

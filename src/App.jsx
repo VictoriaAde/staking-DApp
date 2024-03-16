@@ -27,7 +27,9 @@ function App() {
     <Container>
       <Header />
       <main className="mt-6">
-        <CreatePoolComponent />
+        <div className="mb-2">
+          <CreatePoolComponent />
+        </div>
         {structuredPools.map((pool) => (
           <PoolCard
             key={pool.id}

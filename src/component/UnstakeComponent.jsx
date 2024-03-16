@@ -1,23 +1,22 @@
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
-import useStake from "../hooks/useStake";
+import useUnstake from "../hooks/useUnstake";
 
-const StakeComponent = () => {
+const UnstakeComponent = () => {
   const [poolId, setPoolId] = useState(0);
-  const [amount, setAmount] = useState(0);
 
-  const handleStake = useStake(poolId, amount);
+  const handleUnstake = useUnstake(poolId);
 
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button className="bg-blue-600">Stake</Button>
+        <Button className="bg-blue-600">Unstake</Button>
       </Dialog.Trigger>
 
       <Dialog.Content style={{ maxWidth: 450 }}>
         <Dialog.Title>Stake</Dialog.Title>
         <Dialog.Description size="2" mb="4">
-          Stake
+          Unstake
         </Dialog.Description>
 
         <Flex direction="column" gap="3">
@@ -30,14 +29,6 @@ const StakeComponent = () => {
               onChange={(e) => setPoolId(e.target.value)}
               placeholder="Enter Pool ID"
             />
-            <Text as="div" size="2" mb="1" weight="bold">
-              Enter Amount
-            </Text>
-            <TextField.Input
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="Enter Amount"
-            />
           </label>
         </Flex>
 
@@ -47,8 +38,8 @@ const StakeComponent = () => {
               Cancel
             </Button>
           </Dialog.Close>
-          <Button className="bg-blue-600" onClick={handleStake}>
-            Stake
+          <Button className="bg-blue-600" onClick={handleUnstake}>
+            Unstake
           </Button>
         </Flex>
       </Dialog.Content>
@@ -56,4 +47,4 @@ const StakeComponent = () => {
   );
 };
 
-export default StakeComponent;
+export default UnstakeComponent;

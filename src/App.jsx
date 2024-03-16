@@ -20,8 +20,10 @@ function App() {
         {pools.map((item, index) => (
           <PoolCard
             key={index}
-            name={item[0]}
-            id={index}
+            totalStakers={item[0]}
+            totalStakedAmount={item[1]}
+            rewardReserve={item[2]}
+            rewardRate={item[3]}
             PoolCount={Number(item.PoolCount)}
           />
         ))}
@@ -31,3 +33,9 @@ function App() {
 }
 
 export default App;
+
+// there should be a way we can name arrays
+
+// Combining all pools into one array
+
+// destructure it and give them names

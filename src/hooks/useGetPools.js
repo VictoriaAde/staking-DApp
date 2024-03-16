@@ -11,7 +11,8 @@ const useGetPools = () => {
     contract
       .getPoolByID(0)
       .then((res) => {
-        setPool((prev) => [...prev]);
+        setPool((prev) => [...prev, res]);
+
         console.log(res);
       })
       .catch((err) => {

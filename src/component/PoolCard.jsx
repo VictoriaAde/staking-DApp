@@ -1,11 +1,11 @@
 import { Box, Card, Flex, Text } from "@radix-ui/themes";
+import StakeComponent from "./StakeComponent";
 
 const PoolCard = ({
   totalStakers,
   totalStakedAmount,
   rewardReserve,
   rewardRate,
-  handleStake,
 }) => {
   return (
     <Card size="2" style={{ width: 425 }}>
@@ -26,13 +26,8 @@ const PoolCard = ({
                 rewardRate {rewardRate}
               </Text>
             </div>
-            <button
-              className="text-white bg-blue-600 py-1 px-4 rounded-md"
-              onClick={() => handleStake(totalStakers)}
-            >
-              Stake
-            </button>
           </Flex>
+          <StakeComponent />
         </Box>
       </Flex>
     </Card>
